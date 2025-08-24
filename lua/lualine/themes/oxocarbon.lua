@@ -3,7 +3,7 @@ local colors = {
 	color0 = oxocarbon.base02,
 	color1 = oxocarbon.base10,
 	color2 = oxocarbon.base08,
-	color3 = oxocarbon.blend,
+	color3 = oxocarbon.darker,
 	color6 = oxocarbon.base04,
 	color7 = oxocarbon.base09,
 	color8 = oxocarbon.base14,
@@ -11,7 +11,10 @@ local colors = {
 	color10 = oxocarbon.base13,
 }
 return {
-	replace = { a = { fg = colors.color0, bg = colors.color1 }, b = { fg = colors.color2, bg = colors.color3 } },
+	replace = {
+		a = { fg = colors.color0, bg = colors.color1 },
+		b = { fg = colors.color2, bg = colors.color3 },
+	},
 	inactive = {
 		a = { fg = colors.color0, bg = colors.color7 },
 		b = { fg = colors.color6, bg = colors.color3 },
@@ -36,4 +39,3 @@ return {
 	},
 	command = { a = { fg = colors.color0, bg = colors.color10 } },
 }
-

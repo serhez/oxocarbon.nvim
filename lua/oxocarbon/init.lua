@@ -1,14 +1,18 @@
 local _local_1_ = require("oxocarbon.colorutils")
 local blend_hex = _local_1_["blend-hex"]
+
 if vim.g.colors_name then
 	vim.cmd.hi("clear")
-else
 end
+
 vim.g["colors_name"] = "oxocarbon"
 vim.o["termguicolors"] = true
+
+local black = "#000000"
 local base00 = "#161616"
 local base06 = "#ffffff"
 local base09 = "#78a9ff"
+
 local oxocarbon = (
 	(
 		(vim.o.background == "dark")
@@ -29,7 +33,9 @@ local oxocarbon = (
 			base13 = "#42be65",
 			base14 = "#be95ff",
 			base15 = "#82cfff",
+			warn = blend_hex("#FFAB91", black, 0.1),
 			blend = "#131313",
+			darker = blend_hex("#131313", black, 0.3),
 			none = "NONE",
 		}
 	)
@@ -43,17 +49,20 @@ local oxocarbon = (
 		base06 = "#525252",
 		base07 = "#08bdba",
 		base08 = "#ff7eb6",
-		base09 = "#ee5396",
-		base10 = "#FF6F00",
+		base09 = "#FF6F00",
+		base10 = "#ee5396",
 		base11 = "#0f62fe",
 		base12 = "#673AB7",
 		base13 = "#42be65",
 		base14 = "#be95ff",
 		base15 = "#FFAB91",
+		warn = "#FFAB91",
 		blend = "#FAFAFA",
+		darker = blend_hex("#FAFAFA", black, 0.2),
 		none = "NONE",
 	}
 )
+
 vim.g["terminal_color_0"] = oxocarbon.base01
 vim.g["terminal_color_1"] = oxocarbon.base11
 vim.g["terminal_color_2"] = oxocarbon.base14
@@ -94,16 +103,16 @@ vim.api.nvim_set_hl(0, "MatchParen", { fg = oxocarbon.none, bg = oxocarbon.base0
 vim.api.nvim_set_hl(0, "Bold", { fg = oxocarbon.none, bg = oxocarbon.none, bold = true })
 vim.api.nvim_set_hl(0, "Italic", { fg = oxocarbon.none, bg = oxocarbon.none, italic = true })
 vim.api.nvim_set_hl(0, "Underlined", { fg = oxocarbon.none, bg = oxocarbon.none, underline = true })
-vim.api.nvim_set_hl(0, "DiagnosticWarn", { fg = oxocarbon.base14, bg = oxocarbon.none })
+vim.api.nvim_set_hl(0, "DiagnosticWarn", { fg = oxocarbon.warn, bg = oxocarbon.none })
 vim.api.nvim_set_hl(0, "DiagnosticError", { fg = oxocarbon.base10, bg = oxocarbon.none })
 vim.api.nvim_set_hl(0, "DiagnosticInfo", { fg = oxocarbon.base09, bg = oxocarbon.none })
 vim.api.nvim_set_hl(0, "DiagnosticHint", { fg = oxocarbon.base04, bg = oxocarbon.none })
-vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { fg = oxocarbon.base14, bg = oxocarbon.none, undercurl = true })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { fg = oxocarbon.warn, bg = oxocarbon.none, undercurl = true })
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { fg = oxocarbon.base10, bg = oxocarbon.none, undercurl = true })
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { fg = oxocarbon.base04, bg = oxocarbon.none, undercurl = true })
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", { fg = oxocarbon.base04, bg = oxocarbon.none, undercurl = true })
 vim.api.nvim_set_hl(0, "HealthError", { fg = oxocarbon.base10, bg = oxocarbon.none })
-vim.api.nvim_set_hl(0, "HealthWarning", { fg = oxocarbon.base14, bg = oxocarbon.none })
+vim.api.nvim_set_hl(0, "HealthWarning", { fg = oxocarbon.warn, bg = oxocarbon.none })
 vim.api.nvim_set_hl(0, "HealthSuccess", { fg = oxocarbon.base13, bg = oxocarbon.none })
 vim.api.nvim_set_hl(0, "@comment", { link = "Comment" })
 vim.api.nvim_set_hl(0, "@text.literal.commodity", { fg = oxocarbon.base13, bg = oxocarbon.none })
@@ -180,7 +189,7 @@ vim.api.nvim_set_hl(0, "ModeMsg", { fg = oxocarbon.base04, bg = oxocarbon.none }
 vim.api.nvim_set_hl(0, "MoreMsg", { fg = oxocarbon.base08, bg = oxocarbon.none })
 vim.api.nvim_set_hl(0, "Question", { fg = oxocarbon.base04, bg = oxocarbon.none })
 vim.api.nvim_set_hl(0, "Substitute", { fg = oxocarbon.base01, bg = oxocarbon.base08 })
-vim.api.nvim_set_hl(0, "WarningMsg", { fg = oxocarbon.base14, bg = oxocarbon.none })
+vim.api.nvim_set_hl(0, "WarningMsg", { fg = oxocarbon.warn, bg = oxocarbon.none })
 vim.api.nvim_set_hl(0, "WildMenu", { fg = oxocarbon.base08, bg = oxocarbon.base01 })
 vim.api.nvim_set_hl(0, "helpHyperTextJump", { fg = oxocarbon.base08, bg = oxocarbon.none })
 vim.api.nvim_set_hl(0, "helpSpecial", { fg = oxocarbon.base09, bg = oxocarbon.none })
@@ -351,12 +360,12 @@ vim.api.nvim_set_hl(0, "@tag.delimiter", { fg = oxocarbon.base15, bg = oxocarbon
 vim.api.nvim_set_hl(0, "@tag.builtin.tsx", { link = "@tag.tsx" })
 vim.api.nvim_set_hl(0, "@reference", { fg = oxocarbon.base04, bg = oxocarbon.none })
 vim.api.nvim_set_hl(0, "NvimInternalError", { fg = oxocarbon.base00, bg = oxocarbon.base08 })
-vim.api.nvim_set_hl(0, "NormalFloat", { fg = oxocarbon.base05, bg = oxocarbon.blend })
-vim.api.nvim_set_hl(0, "FloatBorder", { fg = oxocarbon.blend, bg = oxocarbon.blend })
+vim.api.nvim_set_hl(0, "NormalFloat", { fg = oxocarbon.base05, bg = oxocarbon.darker })
+vim.api.nvim_set_hl(0, "FloatBorder", { fg = oxocarbon.darker, bg = oxocarbon.darker })
 vim.api.nvim_set_hl(0, "NormalNC", { fg = oxocarbon.base05, bg = oxocarbon.base00 })
 vim.api.nvim_set_hl(0, "TermCursor", { fg = oxocarbon.base00, bg = oxocarbon.base04 })
 vim.api.nvim_set_hl(0, "TermCursorNC", { fg = oxocarbon.base00, bg = oxocarbon.base04 })
-vim.api.nvim_set_hl(0, "StatusLine", { fg = oxocarbon.base04, bg = oxocarbon.base00 })
+vim.api.nvim_set_hl(0, "StatusLine", { fg = oxocarbon.base04, bg = oxocarbon.darker })
 vim.api.nvim_set_hl(0, "StatusLineNC", { fg = oxocarbon.base04, bg = oxocarbon.base01 })
 vim.api.nvim_set_hl(0, "StatusReplace", { fg = oxocarbon.base00, bg = oxocarbon.base08 })
 vim.api.nvim_set_hl(0, "StatusInsert", { fg = oxocarbon.base00, bg = oxocarbon.base12 })
@@ -364,8 +373,10 @@ vim.api.nvim_set_hl(0, "StatusVisual", { fg = oxocarbon.base00, bg = oxocarbon.b
 vim.api.nvim_set_hl(0, "StatusTerminal", { fg = oxocarbon.base00, bg = oxocarbon.base11 })
 vim.api.nvim_set_hl(0, "StatusNormal", { fg = oxocarbon.base00, bg = oxocarbon.base15 })
 vim.api.nvim_set_hl(0, "StatusCommand", { fg = oxocarbon.base00, bg = oxocarbon.base13 })
-vim.api.nvim_set_hl(0, "StatusLineDiagnosticWarn", { fg = oxocarbon.base14, bg = oxocarbon.base00, bold = true })
+vim.api.nvim_set_hl(0, "StatusLineDiagnosticWarn", { fg = oxocarbon.warn, bg = oxocarbon.base00, bold = true })
 vim.api.nvim_set_hl(0, "StatusLineDiagnosticError", { fg = oxocarbon.base10, bg = oxocarbon.base00, bold = true })
+vim.api.nvim_set_hl(0, "WinBar", { fg = oxocarbon.base04, bg = oxocarbon.darker })
+vim.api.nvim_set_hl(0, "WinBarNC", { fg = oxocarbon.base04, bg = oxocarbon.darker })
 vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = oxocarbon.blend, bg = oxocarbon.blend })
 vim.api.nvim_set_hl(0, "TelescopePromptBorder", { fg = oxocarbon.base02, bg = oxocarbon.base02 })
 vim.api.nvim_set_hl(0, "TelescopePromptNormal", { fg = oxocarbon.base05, bg = oxocarbon.base02 })
@@ -378,17 +389,17 @@ vim.api.nvim_set_hl(0, "TelescopeSelection", { fg = oxocarbon.none, bg = oxocarb
 vim.api.nvim_set_hl(0, "TelescopePreviewLine", { fg = oxocarbon.none, bg = oxocarbon.base01 })
 vim.api.nvim_set_hl(0, "TelescopeMatching", { fg = oxocarbon.base08, bg = oxocarbon.none, bold = true, italic = true })
 vim.api.nvim_set_hl(0, "NotifyERRORBorder", { fg = oxocarbon.base08, bg = oxocarbon.none })
-vim.api.nvim_set_hl(0, "NotifyWARNBorder", { fg = oxocarbon.base14, bg = oxocarbon.none })
+vim.api.nvim_set_hl(0, "NotifyWARNBorder", { fg = oxocarbon.warn, bg = oxocarbon.none })
 vim.api.nvim_set_hl(0, "NotifyINFOBorder", { fg = oxocarbon.base05, bg = oxocarbon.none })
 vim.api.nvim_set_hl(0, "NotifyDEBUGBorder", { fg = oxocarbon.base13, bg = oxocarbon.none })
 vim.api.nvim_set_hl(0, "NotifyTRACEBorder", { fg = oxocarbon.base13, bg = oxocarbon.none })
 vim.api.nvim_set_hl(0, "NotifyERRORIcon", { fg = oxocarbon.base08, bg = oxocarbon.none })
-vim.api.nvim_set_hl(0, "NotifyWARNIcon", { fg = oxocarbon.base14, bg = oxocarbon.none })
+vim.api.nvim_set_hl(0, "NotifyWARNIcon", { fg = oxocarbon.warn, bg = oxocarbon.none })
 vim.api.nvim_set_hl(0, "NotifyINFOIcon", { fg = oxocarbon.base05, bg = oxocarbon.none })
 vim.api.nvim_set_hl(0, "NotifyDEBUGIcon", { fg = oxocarbon.base13, bg = oxocarbon.none })
 vim.api.nvim_set_hl(0, "NotifyTRACEIcon", { fg = oxocarbon.base13, bg = oxocarbon.none })
 vim.api.nvim_set_hl(0, "NotifyERRORTitle", { fg = oxocarbon.base08, bg = oxocarbon.none })
-vim.api.nvim_set_hl(0, "NotifyWARNTitle", { fg = oxocarbon.base14, bg = oxocarbon.none })
+vim.api.nvim_set_hl(0, "NotifyWARNTitle", { fg = oxocarbon.warn, bg = oxocarbon.none })
 vim.api.nvim_set_hl(0, "NotifyINFOTitle", { fg = oxocarbon.base05, bg = oxocarbon.none })
 vim.api.nvim_set_hl(0, "NotifyDEBUGTitle", { fg = oxocarbon.base13, bg = oxocarbon.none })
 vim.api.nvim_set_hl(0, "NotifyTRACETitle", { fg = oxocarbon.base13, bg = oxocarbon.none })
@@ -459,5 +470,5 @@ vim.api.nvim_set_hl(0, "VimwikiHeaderChar", { link = "markdownH1" })
 vim.api.nvim_set_hl(0, "VimwikiList", { link = "markdownListMarker" })
 vim.api.nvim_set_hl(0, "VimwikiLink", { link = "markdownUrl" })
 vim.api.nvim_set_hl(0, "VimwikiCode", { link = "markdownCode" })
-return { oxocarbon = oxocarbon }
 
+return { oxocarbon = oxocarbon }
